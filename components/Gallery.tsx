@@ -185,7 +185,7 @@ export default function Gallery() {
             style={{
               position: "relative",
               maxWidth: "90vw",
-              maxHeight: "88vh",
+              maxHeight: "88dvh",
               width: "800px",
               height: "600px",
             }}

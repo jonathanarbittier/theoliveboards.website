@@ -7,7 +7,7 @@ export default function Hero() {
       id="home"
       aria-label="Hero"
       style={{
-        minHeight: "100vh",
+        minHeight: "100dvh",
         display: "grid",
         gridTemplateColumns: "1fr",
         position: "relative",
@@ -55,7 +55,7 @@ export default function Hero() {
           display: "flex",
           alignItems: "flex-end",
           padding: "0 2rem 5rem",
-          minHeight: "100vh",
+          minHeight: "100dvh",
         }}
       >
         <div style={{ maxWidth: "560px" }}>

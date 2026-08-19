@@ -6,7 +6,8 @@ export default function SignaturePhoto() {
       aria-label="A table people remember"
       style={{
         position: "relative",
-        height: "80vh",
+        width: "100%",
+        height: "80dvh",
         minHeight: "500px",
         overflow: "hidden",
       }}

@@ -1,0 +1,284 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #FAF7F2;
+  --color-cream: #F2EDE5;
+  --color-olive: #4A5C3A;
+  --color-olive-dark: #2E3A22;
+  --color-olive-light: #5D7349;
+  --color-sage: #7A8C6A;
+  --color-sage-light: #A8B89A;
+  --color-charcoal: #2C2C2A;
+  --color-charcoal-light: #4A4A47;
+  --color-tan: #C8AA82;
+  --color-tan-light: #E4D4BC;
+  --color-burgundy: #6B2737;
+  --color-linen: #EDE8E0;
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    line-height: 1.15;
+    font-weight: 400;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  ::selection {
+    background-color: var(--color-tan-light);
+    color: var(--color-olive-dark);
+  }
+}
+
+@layer components {
+  /* Reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* Nav link underline effect */
+  .nav-link {
+    position: relative;
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--color-charcoal);
+    text-decoration: none;
+    padding-bottom: 2px;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-olive);
+    transition: width 0.25s ease;
+  }
+
+  .nav-link:hover::after { width: 100%; }
+  .nav-link:hover { color: var(--color-olive); }
+
+  .nav-link-light {
+    color: rgba(255, 255, 255, 0.88);
+  }
+  .nav-link-light::after {
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  .nav-link-light:hover { color: white; }
+
+  /* Btn primary */
+  .btn-primary {
+    display: inline-block;
+    background-color: var(--color-olive);
+    color: white;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.875rem 2rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-olive-dark);
+    transform: translateY(-1px);
+  }
+
+  /* Btn outline */
+  .btn-outline {
+    display: inline-block;
+    border: 1px solid var(--color-olive);
+    color: var(--color-olive);
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.875rem 2rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-olive);
+    color: white;
+  }
+
+  /* Section label (eyebrow text) */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-sage);
+  }
+
+  /* Image hover scale */
+  .img-hover img {
+    transition: transform 0.5s ease;
+  }
+  .img-hover:hover img {
+    transform: scale(1.03);
+  }
+
+  /* Offering number */
+  .offering-number {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--color-tan-light);
+    font-style: italic;
+    user-select: none;
+  }
+}
+
+/* ─── Responsive layout overrides ──────────────────────────── */
+
+@media (max-width: 768px) {
+  /* Intro */
+  .intro-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+  .intro-grid > div:last-child {
+    padding-left: 0 !important;
+  }
+
+  /* Offerings header */
+  .offerings-header {
+    grid-template-columns: 1fr !important;
+  }
+  .offerings-header > div:last-child p {
+    margin-left: 0 !important;
+  }
+
+  /* Offering rows */
+  .offering-row {
+    grid-template-columns: 1fr !important;
+  }
+  .offering-row > div {
+    order: unset !important;
+  }
+
+  /* Events header */
+  .events-header {
+    grid-template-columns: 1fr !important;
+  }
+  .events-header > div:last-child p {
+    margin-left: 0 !important;
+  }
+
+  /* About */
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
+  }
+  .about-grid > div:first-child {
+    order: 2;
+  }
+  .about-grid > div:last-child {
+    order: 1;
+  }
+
+  /* Social */
+  .social-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .events-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Inquiry form rows */
+  .form-row {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .events-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Gallery */
+  .gallery-grid {
+    grid-template-columns: 1fr !important;
+    grid-auto-rows: 220px !important;
+  }
+  .gallery-grid > div {
+    grid-column: span 1 !important;
+  }
+
+  /* Social */
+  .social-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Gallery at tablet */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-auto-rows: 180px !important;
+  }
+  .gallery-grid > div[class*="span-2"] {
+    grid-column: span 2 !important;
+  }
+}
